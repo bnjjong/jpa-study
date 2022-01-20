@@ -12,6 +12,7 @@ import com.jjong.jpastudy.controller.dto.ClientForm;
 import com.jjong.jpastudy.domain.Client;
 import com.jjong.jpastudy.repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,13 +31,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 public class ClientService {
   private final ClientRepository clientRepository;
 
   @Transactional
   public void save(ClientForm form) {
-    ModelMapper mapper = new ModelMapper();
-    Client client = mapper.map(form, Client.class);
+    Client client = new Client(form.getName(), form.getEmail(), form.getPhoneNumber());
+    log.info("client>>> {}", client);
     clientRepository.save(client);
   }
 }
