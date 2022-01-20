@@ -1,0 +1,9 @@
+### 저장
+POST http://localhost:8888/client
+Content-Type: application/json
+
+{
+  "name": "jongsang",
+  "email": "jongsang@bigin.io",
+  "phone_number": "010-3497-7777"
+}
