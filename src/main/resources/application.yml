@@ -5,12 +5,17 @@ application:
 server:
   port: 8888
 
+server:
+  port: 8888
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:33333/jpa-study?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: user
     password: 1234
     driver-class-name: org.mariadb.jdbc.Driver
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 
   jpa:
     hibernate:

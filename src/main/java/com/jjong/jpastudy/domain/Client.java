@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -39,10 +41,14 @@ public class Client {
   @Id
   @GeneratedValue
   @Column(name = "id", nullable = false)
+  @Setter
   private Long id;
 
+  @Setter
   private String name;
+  @Setter
   private String email;
+  @Setter
   private String phoneNumber;
 
   @OneToMany(mappedBy = "client")
@@ -51,7 +57,8 @@ public class Client {
   @OneToOne
   private Balance balance;
 
-  public Client(String name, String email, String phoneNumber) {
+  public Client(
+      String name, String email, String phoneNumber) {
     this.name = name;
     this.email = email;
     this.phoneNumber = phoneNumber;
@@ -68,4 +75,6 @@ public class Client {
         ", balance=" + balance +
         '}';
   }
+
+
 }

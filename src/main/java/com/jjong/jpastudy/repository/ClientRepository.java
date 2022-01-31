@@ -9,6 +9,7 @@
 package com.jjong.jpastudy.repository;
 
 import com.jjong.jpastudy.domain.Client;
+import java.util.List;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -31,12 +32,19 @@ public class ClientRepository {
   private final EntityManager em;
 
   public void save(Client client) {
-    em.persist(client);
+    if (client.getId() == null) {
+      em.persist(client);
+    } else {
+      em.merge(client);
+    }
   }
 
   public Client findById(Long id) {
     return em.find(Client.class, id);
   }
 
+  public List<Client> findAll() {
+    return em.createQuery("select c from Client c", Client.class).getResultList();
+  }
 
 }
