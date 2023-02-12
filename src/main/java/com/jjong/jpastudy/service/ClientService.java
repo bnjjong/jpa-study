@@ -8,12 +8,13 @@
 
 package com.jjong.jpastudy.service;
 
-import com.jjong.jpastudy.controller.dto.ClientForm;
+import com.jjong.jpastudy.api.dto.ClientForm;
+import com.jjong.jpastudy.api.dto.ClientResponse;
 import com.jjong.jpastudy.domain.Client;
 import com.jjong.jpastudy.repository.ClientRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,5 +41,13 @@ public class ClientService {
     Client client = new Client(form.getName(), form.getEmail(), form.getPhoneNumber());
     log.info("client>>> {}", client);
     clientRepository.save(client);
+  }
+
+  public List<ClientResponse> findAll() {
+    return null;
+  }
+
+  public Client findById(Long clientId) {
+    return null;
   }
 }
